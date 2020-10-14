@@ -1,45 +1,66 @@
-var negbtn = document.getElementById('negbtn');
-negbtn.addEventListener('click',function(){
-    var fromInput = document.getElementById('blackpick');
-    var numberInput = parseInt(fromInput.value);
-    var newValue = numberInput - 1;
-    fromInput.value = newValue;
+
+// function handleProductChange(isIncrease){
+//     var fromInput = document.getElementById('blackpick');
+//     let numberInput = parseInt(fromInput.value);
+//     let newValue = numberInput;
+//     if(isIncrease == true)  newValue = numberInput + 1;
+//     else if(isIncrease == false && numberInput > 1) newValue = numberInput - 1;
+    
+//     fromInput.value = newValue;
+    
+//     var final = newValue * 1200;
+//     document.getElementById('blackprice').innerText =final;
+// }
+
+// function handleProductChange2(isIncrease){
+//     var fromInput2 = document.getElementById('casepick');
+//     let numberInput2 = parseInt(fromInput2.value);
+//     let newValue2 = numberInput2;
+//     if(isIncrease == true)  newValue2 = numberInput2 + 1;
+//     else if(isIncrease == false && numberInput2 > 1) newValue2 = numberInput2 - 1;
+    
+//     fromInput2.value = newValue2;
+    
+//     var final2 = newValue2 * 60;
+//     document.getElementById('sixty').innerText =final2;
+// }
 
 
-    var div = document.getElementById('blackprice');
-    var divNumber = parseInt(div.innerText);
-    var division = divNumber - 1200;
-    div.innerText = division;
-})
 
-var posbtn = document.getElementById('posbtn');
-posbtn.addEventListener('click',function(){
-    var caseInput = document.getElementById('blackpick');
-    var caseCount = parseInt(caseInput.value);
-    var caseNew = caseCount +1;
-    caseInput.value = caseNew;
-   
+function handleProductChange(product,isIncrease){
+    
+    let numberInput = getInputValue(product);
+    let newValue = numberInput;
+    if(isIncrease == true)  newValue = numberInput + 1;
+    if(isIncrease == false && numberInput > 1) newValue = numberInput - 1;
+    
+    var fromInput = document.getElementById(product + 'pick').value = newValue;
+    
+    
+    let final = 0;
+    if(product == 'black') final = newValue * 1200;
+    if(product == 'case') final = newValue * 60;
 
-    const caseTotal = caseNew * 1200;
-    document.getElementById('blackprice').innerText = caseTotal;
+    document.getElementById(product + 'price').innerText =final;
+    calculateTotal();
+}
 
+function calculateTotal()
+{
+    var totalPrice = getInputValue('black')*1200 + getInputValue('case')*60;
+    document.getElementById('subtotal').innerText = totalPrice;
 
-})
+    const tax = totalPrice * 0.1;
+    document.getElementById('tax').innerText = tax;
 
-var negbtn2 = document.getElementById('negbtn2');
-negbtn2.addEventListener('click',function(){
-    console.log("working-ee-");
-})
+    const grandTotal = totalPrice + tax;
+    document.getElementById('grandtotal').innerText = grandTotal;
+}
 
-var posbtn2 = document.getElementById('posbtn2');
-posbtn2.addEventListener('click',function(){
-    console.log("working+ee+");
-})
-
-var checkbtn = document.getElementById('checkbtn');
-checkbtn.addEventListener('click',function(){
-    console.log("dfgdggsfg+ee+");
-})
-
-// convert string to value
+function getInputValue(product)
+{
+    var productInput = document.getElementById(product + 'pick');
+    var productCount = parseInt(productInput.value);
+    return productCount;
+}
 

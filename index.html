@@ -16,9 +16,9 @@
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    <button id="negbtn" class="btn btn-success">-</button>
+                    <button onclick=" handleProductChange('black',false)" class="btn btn-success">-</button>
                 <input id="blackpick" type="text" value="1">
-                <button id="posbtn" class="btn btn-success">+</button>
+                <button onclick=" handleProductChange('black',true)" class="btn btn-success">+</button>
                 <h5>$<span id="blackprice">1200</span></h5>
                 </div>
             </div>
@@ -30,19 +30,19 @@
             </div>
             <div class="col-md-6">
                 <div class="row">
-                    <button id="negbtn2" class="btn btn-success">-</button>
+                    <button onclick=" handleProductChange('case',false)" class="btn btn-success">-</button>
                     <input id="casepick" type="text" value="1">
-                    <button id="posbtn2" class="btn btn-success">+</button>
-                    <h5>$<span>59</span></h5>
+                    <button onclick=" handleProductChange('case',true)" class="btn btn-success">+</button>
+                    <h5>$<span id="caseprice">60</span></h5>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="calculation">
-                <h5>Subtotal: $<span>1278</span></h5>
-                <h5>Tax: $<span>0</span></h5>
-                <h5>Total: $<span>1278</span></h5>
+                <h5>Subtotal: $<span id="subtotal">0</span></h5>
+                <h5>Tax: $<span id="tax">0</span></h5>
+                <h5>Total: $<span id="grandtotal">0</span></h5>
             </div>
         </div>
         <br>
